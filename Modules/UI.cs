@@ -1,0 +1,203 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine;
+
+namespace Dinkum.Modules
+{
+    class UI
+    {
+        public static void menu()
+        {
+        
+            if (Modules.UI_Vars.t_MENU)
+            {
+                float baseX = 200f;
+
+                GUI.Box(new Rect(baseX + 5f, 5f, 300f, 120f), "");
+                GUI.Label(new Rect(baseX + 10f, 5f, 250f, 30f), "Dinkum Mod Menu - Gh0st");
+
+                Modules.UI_Vars.UIToggleESPMenu = GUI.Toggle(new Rect(baseX + 10f, 32f, 106f, 15f), Modules.UI_Vars.UI_t_ESPm, "ESP Menu");
+                if (Modules.UI_Vars.UIToggleESPMenu != Modules.UI_Vars.UI_t_ESPm)
+                {
+                    Modules.UI_Vars.UI_t_ESPm = !Modules.UI_Vars.UI_t_ESPm;
+                    toggleHelper("ESP");
+                }
+
+                Modules.UI_Vars.UITogglePlayerMenu = GUI.Toggle(new Rect(baseX + 10f, 52f, 106f, 15f), Modules.UI_Vars.UI_t_Playerm, "Player Manager");
+                if (Modules.UI_Vars.UITogglePlayerMenu != Modules.UI_Vars.UI_t_Playerm)
+                {
+                    Modules.UI_Vars.UI_t_Playerm = !Modules.UI_Vars.UI_t_Playerm;
+                    toggleHelper("Player Manager");
+                }
+
+                Modules.UI_Vars.UIToggleAnimalMenu = GUI.Toggle(new Rect(baseX + 146f, 52f, 113f, 15f), Modules.UI_Vars.UI_t_Animalm, "Animal Manager");
+                if (Modules.UI_Vars.UIToggleAnimalMenu != Modules.UI_Vars.UI_t_Animalm)
+                {
+                    Modules.UI_Vars.UI_t_Animalm = !Modules.UI_Vars.UI_t_Animalm;
+                    toggleHelper("Animal Manager");
+                }
+
+                Modules.UI_Vars.UIToggleTownMenu = GUI.Toggle(new Rect(baseX + 10f, 72f, 106f, 15f), Modules.UI_Vars.UI_t_Townm, "Town Manager");
+                if (Modules.UI_Vars.UIToggleTownMenu != Modules.UI_Vars.UI_t_Townm)
+                {
+                    Modules.UI_Vars.UI_t_Townm = !Modules.UI_Vars.UI_t_Townm;
+                    toggleHelper("Town Manager");
+                }
+
+                Modules.UI_Vars.UIToggleWorldMenu = GUI.Toggle(new Rect(baseX + 146f, 72f, 113f, 15f), Modules.UI_Vars.UI_t_Worldm, "World Manager");
+                if (Modules.UI_Vars.UIToggleWorldMenu != Modules.UI_Vars.UI_t_Worldm)
+                {
+                    Modules.UI_Vars.UI_t_Worldm = !Modules.UI_Vars.UI_t_Worldm;
+                    toggleHelper("World Manager");
+                }
+
+                Modules.UI_Vars.UIToggleMiscMenu = GUI.Toggle(new Rect(baseX + 10f, 92f, 106f, 15f), Modules.UI_Vars.UI_t_Miscm, "Misc");
+                if (Modules.UI_Vars.UIToggleMiscMenu != Modules.UI_Vars.UI_t_Miscm)
+                {
+                    Modules.UI_Vars.UI_t_Miscm = !Modules.UI_Vars.UI_t_Miscm;
+                    toggleHelper("Misc");
+                }
+
+
+                if (Modules.UI_Vars.UI_t_ESPm)
+                {
+                    float EbaseX = baseX + 305f;
+
+                    GUI.Box(new Rect(EbaseX + 5f, 5f, 300f, 130f), "");
+
+                    Modules.UI_Vars.UIToggleESPAnimals = GUI.Toggle(new Rect(EbaseX + 10f, 10f, 125f, 15f), Modules.UI_Vars.UI_t_ESPAnimals, "Animals");
+                    if (Modules.UI_Vars.UIToggleESPAnimals != Modules.UI_Vars.UI_t_ESPAnimals)
+                    {
+                        Modules.UI_Vars.UI_t_ESPAnimals = !Modules.UI_Vars.UI_t_ESPAnimals;
+                    }
+
+                    Modules.UI_Vars.UIToggleESPPlayers = GUI.Toggle(new Rect(EbaseX + 10f, 30f, 125f, 15f), Modules.UI_Vars.UI_t_ESPPlayers, "Players");
+                    if (Modules.UI_Vars.UIToggleESPPlayers != Modules.UI_Vars.UI_t_ESPPlayers)
+                    {
+                        Modules.UI_Vars.UI_t_ESPPlayers = !Modules.UI_Vars.UI_t_ESPPlayers;
+                    }
+
+                    Modules.UI_Vars.UIToggleESPNPCs = GUI.Toggle(new Rect(EbaseX + 10f, 50f, 125f, 15f), Modules.UI_Vars.UI_t_ESPNPCs, "NPCs");
+                    if (Modules.UI_Vars.UIToggleESPNPCs != Modules.UI_Vars.UI_t_ESPNPCs)
+                    {
+                        Modules.UI_Vars.UI_t_ESPNPCs = !Modules.UI_Vars.UI_t_ESPNPCs;
+                    }
+
+                    Modules.UI_Vars.UIToggleESPTrees = GUI.Toggle(new Rect(EbaseX + 150f, 10f, 125f, 15f), Modules.UI_Vars.UI_t_ESPTrees, "Trees");
+                    if (Modules.UI_Vars.UIToggleESPTrees != Modules.UI_Vars.UI_t_ESPTrees)
+                    {
+                        Modules.UI_Vars.UI_t_ESPTrees = !Modules.UI_Vars.UI_t_ESPTrees;
+                    }
+
+                    Modules.UI_Vars.UIToggleESPBuried = GUI.Toggle(new Rect(EbaseX + 150f, 30f, 125f, 15f), Modules.UI_Vars.UI_t_ESPBuried, "Buried Items");
+                    if (Modules.UI_Vars.UIToggleESPBuried != Modules.UI_Vars.UI_t_ESPBuried)
+                    {
+                        Modules.UI_Vars.UI_t_ESPBuried = !Modules.UI_Vars.UI_t_ESPBuried;
+                    }
+
+                    Modules.UI_Vars.UIToggleESPLabels = GUI.Toggle(new Rect(EbaseX + 10f, 80f, 125f, 15f), Modules.UI_Vars.UI_t_ESPLabels, "Draw Labels");
+                    if (Modules.UI_Vars.UIToggleESPLabels != Modules.UI_Vars.UI_t_ESPLabels)
+                    {
+                        Modules.UI_Vars.UI_t_ESPLabels = !Modules.UI_Vars.UI_t_ESPLabels;
+                    }
+
+                    Modules.UI_Vars.UIToggleESPLines = GUI.Toggle(new Rect(EbaseX + 10f, 100f, 125f, 15f), Modules.UI_Vars.UI_t_ESPLines, "Draw Lines");
+                    if (Modules.UI_Vars.UIToggleESPLines != Modules.UI_Vars.UI_t_ESPLines)
+                    {
+                        Modules.UI_Vars.UI_t_ESPLines = !Modules.UI_Vars.UI_t_ESPLines;
+                    }
+
+                    Modules.UI_Vars.UIToggleESPBoxes = GUI.Toggle(new Rect(EbaseX + 150f, 80f, 125f, 15f), Modules.UI_Vars.UI_t_ESPBoxes, "Draw Boxes");
+                    if (Modules.UI_Vars.UIToggleESPBoxes != Modules.UI_Vars.UI_t_ESPBoxes)
+                    {
+                        Modules.UI_Vars.UI_t_ESPBoxes = !Modules.UI_Vars.UI_t_ESPBoxes;
+                    }
+                }
+
+                if (Modules.UI_Vars.UI_t_Townm)
+                {
+                    float EbaseX = baseX + 305f;
+
+                    GUI.Box(new Rect(EbaseX + 5f, 5f, 300f, 130f), "");
+                    GUI.Label(new Rect(EbaseX + 10f, 5f, 290f, 25f), $"Town Debt: ${mTownManager.TownDebt}");
+                    GUI.Label(new Rect(EbaseX + 10f, 25f, 290f, 25f), $"Next House Cost: ${TownManager.manage.getNextHouseCost()}");
+
+                    if (GUI.Button(new Rect(EbaseX + 10f, 44f, 131f, 20f), "Clear Debt"))
+                    {
+                        mTownManager.payAllDebt();
+                    }
+                    if (GUI.Button(new Rect(EbaseX + 10f, 69f, 131f, 20f), "Town Donates"))
+                    {
+                        mTownManager.townDonates(1);
+                    }
+                    if (GUI.Button(new Rect(EbaseX + 164f, 44f, 131f, 20f), "Add Beauty"))
+                    {
+                        mTownManager.addTownBeautyToAll();
+                    }
+                    if (GUI.Button(new Rect(EbaseX + 164f, 69f, 131f, 20f), "Teleport to Town"))
+                    {
+                        Hacks.localPlayer.transform.position = TownManager.manage.lastSleptPos;
+                    }
+                }
+
+                if (Modules.UI_Vars.UI_t_Playerm)
+                {
+                    float EbaseX = baseX + 305f;
+
+                    GUI.Box(new Rect(EbaseX + 5f, 5f, 300f, 130f), "");
+
+                    Modules.UI_Vars.UIToggleGodMode = GUI.Toggle(new Rect(EbaseX + 10f, 10f, 125f, 15f), Modules.UI_Vars.UI_t_GodMode, "God Mode");
+                    if (Modules.UI_Vars.UIToggleGodMode != Modules.UI_Vars.UI_t_GodMode)
+                    {
+                        Modules.UI_Vars.UI_t_GodMode = !Modules.UI_Vars.UI_t_GodMode;
+                    }
+
+                    Modules.UI_Vars.UITogglePickupDropped = GUI.Toggle(new Rect(EbaseX + 10f, 30f, 180f, 20f), Modules.UI_Vars.UI_t_PickupDropped, "Auto Pickup Dropped Items");
+                    if (Modules.UI_Vars.UITogglePickupDropped != Modules.UI_Vars.UI_t_PickupDropped)
+                    {
+                        Modules.UI_Vars.UI_t_PickupDropped = !Modules.UI_Vars.UI_t_PickupDropped;
+                    }
+
+                    Modules.UI_Vars.UIToggleFly = GUI.Toggle(new Rect(EbaseX + 10f, 50f, 125f, 15f), Modules.UI_Vars.UI_t_Fly, "Fly Mode");
+                    if (Modules.UI_Vars.UIToggleFly != Modules.UI_Vars.UI_t_Fly)
+                    {
+                        Modules.UI_Vars.UI_t_Fly = !Modules.UI_Vars.UI_t_Fly;
+                    }
+
+                }
+
+            }
+        }
+
+        private static void toggleHelper(string menuName)
+        {
+            switch (menuName)
+            {
+                case "ESP":
+                    if (Modules.UI_Vars.UI_t_Townm) { Modules.UI_Vars.UI_t_Townm = false; }
+                    if (Modules.UI_Vars.UI_t_Playerm) { Modules.UI_Vars.UI_t_Playerm = false; }
+                    break;
+                case "Player Manager":
+                    if (Modules.UI_Vars.UI_t_ESPm) { Modules.UI_Vars.UI_t_ESPm = false; }
+                    if (Modules.UI_Vars.UI_t_Townm) { Modules.UI_Vars.UI_t_Townm = false; }
+                    break;
+                case "Town Manager":
+                    if (Modules.UI_Vars.UI_t_ESPm) { Modules.UI_Vars.UI_t_ESPm = false; }
+                    if (Modules.UI_Vars.UI_t_Playerm) { Modules.UI_Vars.UI_t_Playerm = false; }
+                    break;
+                case "Animal Manager":
+                    break;
+                case "World Manager":
+                    break;
+                case "Misc":
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }
+}
