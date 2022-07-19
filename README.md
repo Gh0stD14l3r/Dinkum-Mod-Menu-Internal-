@@ -33,3 +33,17 @@ Injection properties.
 - Namespace: Dinkum
 - Class: Loader
 - Method: init
+
+Features
+- ESP Menu [Animals, Players, NPC's, Trees, Buried Items] (Supports Labels, Lines and Boxes)
+- God Mode
+- Auto Pickup Items
+- Fly Mode
+- Clear Town Debt
+- Town NPC's Donate
+- Add Beauty to the town
+- Teleport back to your home
+- Lock Tent protection (Network players cannot access your tent)
+
+- More to be added
+
