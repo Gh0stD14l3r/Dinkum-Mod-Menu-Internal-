@@ -139,8 +139,14 @@ namespace Dinkum.Modules
                     }
                     if (GUI.Button(new Rect(EbaseX + 164f, 69f, 131f, 20f), "Teleport to Town"))
                     {
-                        Hacks.localPlayer.transform.position = TownManager.manage.lastSleptPos;
+                        mTownManager.TeleportToHome();
                     }
+                    Modules.UI_Vars.UIToggleLockTent = GUI.Toggle(new Rect(EbaseX + 10f, 94f, 131f, 20f), Modules.UI_Vars.UI_t_LockTent, "Lock Tent");
+                    if (Modules.UI_Vars.UIToggleLockTent != Modules.UI_Vars.UI_t_LockTent)
+                    {
+                        Modules.UI_Vars.UI_t_LockTent = !Modules.UI_Vars.UI_t_LockTent;
+                    }
+                    
                 }
 
                 if (Modules.UI_Vars.UI_t_Playerm)

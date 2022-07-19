@@ -17,6 +17,22 @@ namespace Dinkum.Modules
             {
                 TownDebt = NetworkMapSharer.share.townDebt;
             }
+
+            if (Modules.UI_Vars.UIToggleLockTent)
+            {
+                Vector3 bagLocation = TownManager.manage.lastSleptPos;
+                foreach (CharMovement entity in Hacks.Players)
+                {
+                    if (entity)
+                    {
+                        Vector3 pivotPos = entity.transform.position;
+                        if (!entity.isLocalPlayer && Vector3.Distance(bagLocation, pivotPos) <= 10f)
+                        {
+                            entity.transform.position = NetworkMapSharer.share.nonLocalSpawnPos.position;
+                        }
+                    }
+                }
+            }
         }
 
         public static void payAllDebt()
@@ -39,6 +55,11 @@ namespace Dinkum.Modules
             TownManager.manage.addTownBeauty(100f, TownManager.TownBeautyType.Fence);
             TownManager.manage.addTownBeauty(100f, TownManager.TownBeautyType.Flowers);
             TownManager.manage.addTownBeauty(100f, TownManager.TownBeautyType.Path);
+        }
+
+        public static void TeleportToHome()
+        {
+            Hacks.localPlayer.transform.position = TownManager.manage.lastSleptPos;
         }
 
 

@@ -46,6 +46,11 @@ namespace Dinkum.Modules
         public static bool UI_t_ESPLines = false;
         public static bool UI_t_ESPBoxes = false;
 
+        //Town Manager Menu
+        public static bool UIToggleLockTent;
+
+        public static bool UI_t_LockTent = false;
+
         //Player Menu
         public static bool UIToggleGodMode;
         public static bool UITogglePickupDropped;
