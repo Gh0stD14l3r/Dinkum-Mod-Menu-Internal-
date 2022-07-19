@@ -54,8 +54,6 @@ namespace Dinkum
                 }
             }
 
-            
-
             // 5 Second timer to loop entities and objects to return to lists
             Timer += Time.deltaTime; 
             if (Timer >= 5f) 
