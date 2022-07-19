@@ -23,26 +23,10 @@ namespace Dinkum.Modules
                 masterDebug = UnityEngine.GameObject.FindObjectsOfType<GameObject>().Distinct<GameObject>().ToList<GameObject>();
             }
             
-            foreach(GameObject o in masterDebug)
-            {
-                appendToDebug(o.name);
-
-                foreach(Component c in o.GetComponents<Component>().ToList<Component>())
-                {
-                    appendToDebug($"- {c.name}");
-                    foreach(Component c2 in c.GetComponents<Component>().ToList<Component>())
-                    {
-                        appendToDebug($"--- {c2.name}");
-                        
-                    }
-                }
-            }
+            
 
         }
 
-        private static void appendToDebug(string outText)
-        {
-            System.IO.File.AppendAllText("1234DebugOutput.txt", outText);
-        }
+        
     }
 }

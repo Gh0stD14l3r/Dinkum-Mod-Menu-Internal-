@@ -9,6 +9,7 @@ namespace Dinkum.Modules
 {
     class UI
     {
+        public static string eLocate = "Tent";
         public static void menu()
         {
         
@@ -26,7 +27,7 @@ namespace Dinkum.Modules
                     toggleHelper("ESP");
                 }
 
-                Modules.UI_Vars.UITogglePlayerMenu = GUI.Toggle(new Rect(baseX + 10f, 52f, 106f, 15f), Modules.UI_Vars.UI_t_Playerm, "Player Manager");
+                Modules.UI_Vars.UITogglePlayerMenu = GUI.Toggle(new Rect(baseX + 10f, 52f, 106f, 17f), Modules.UI_Vars.UI_t_Playerm, "Player Manager");
                 if (Modules.UI_Vars.UITogglePlayerMenu != Modules.UI_Vars.UI_t_Playerm)
                 {
                     Modules.UI_Vars.UI_t_Playerm = !Modules.UI_Vars.UI_t_Playerm;
@@ -84,6 +85,12 @@ namespace Dinkum.Modules
                     if (Modules.UI_Vars.UIToggleESPNPCs != Modules.UI_Vars.UI_t_ESPNPCs)
                     {
                         Modules.UI_Vars.UI_t_ESPNPCs = !Modules.UI_Vars.UI_t_ESPNPCs;
+                    }
+
+                    Modules.UI_Vars.UIToggleESPLocatorMenu = GUI.Toggle(new Rect(EbaseX + 150f, 50f, 125f, 15f), Modules.UI_Vars.UI_t_ESPLocatorMenu, "Locator");
+                    if (Modules.UI_Vars.UIToggleESPLocatorMenu != Modules.UI_Vars.UI_t_ESPLocatorMenu)
+                    {
+                        Modules.UI_Vars.UI_t_ESPLocatorMenu = !Modules.UI_Vars.UI_t_ESPLocatorMenu;
                     }
 
                     Modules.UI_Vars.UIToggleESPTrees = GUI.Toggle(new Rect(EbaseX + 150f, 10f, 125f, 15f), Modules.UI_Vars.UI_t_ESPTrees, "Trees");
@@ -173,10 +180,39 @@ namespace Dinkum.Modules
                         Modules.UI_Vars.UI_t_Fly = !Modules.UI_Vars.UI_t_Fly;
                     }
 
-                    Modules.UI_Vars.UIToggleCloseFollow = GUI.Toggle(new Rect(EbaseX + 10f, 70f, 125f, 22f), Modules.UI_Vars.UI_t_CloseFollow, "Close Follow Camera");
+                    Modules.UI_Vars.UIToggleCloseFollow = GUI.Toggle(new Rect(EbaseX + 10f, 70f, 180f, 22f), Modules.UI_Vars.UI_t_CloseFollow, "Close Follow Camera");
                     if (Modules.UI_Vars.UIToggleCloseFollow != Modules.UI_Vars.UI_t_CloseFollow)
                     {
                         Modules.UI_Vars.UI_t_CloseFollow = !Modules.UI_Vars.UI_t_CloseFollow;
+                    }
+                }
+
+                if (Modules.UI_Vars.UI_t_ESPLocatorMenu)
+                {
+                    float EbaseX = baseX + 615f;
+
+                    GUI.Box(new Rect(EbaseX + 5f, 5f, 300f, 130f), "");
+
+                    Modules.UI_Vars.UIToggleLocator = GUI.Toggle(new Rect(EbaseX + 10f, 10f, 180f, 17f), Modules.UI_Vars.UI_t_Locator, "Use GameObject Locator");
+                    if (Modules.UI_Vars.UIToggleLocator != Modules.UI_Vars.UI_t_Locator)
+                    {
+                        Modules.UI_Vars.UI_t_Locator = !Modules.UI_Vars.UI_t_Locator;
+                    }
+                    eLocate = GUI.TextField(new Rect(EbaseX + 10f, 30f, 200f, 25f), eLocate);
+
+
+                }
+
+                if (Modules.UI_Vars.UI_t_Worldm)
+                {
+                    float EbaseX = baseX + 305f;
+
+                    GUI.Box(new Rect(EbaseX + 5f, 5f, 300f, 130f), "");
+
+                    Modules.UI_Vars.UITogglePause = GUI.Toggle(new Rect(EbaseX + 10f, 10f, 125f, 15f), Modules.UI_Vars.UI_t_Pause, "Pause Game");
+                    if (Modules.UI_Vars.UITogglePause != Modules.UI_Vars.UI_t_Pause)
+                    {
+                        Modules.UI_Vars.UI_t_Pause = !Modules.UI_Vars.UI_t_Pause;
                     }
                 }
 
@@ -188,7 +224,7 @@ namespace Dinkum.Modules
 
                     if (GUI.Button(new Rect(EbaseX + 10f, 10f, 131f, 20f), "Debug Output"))
                     {
-                        mDebug.debugWindow();
+                        
                     }
                     
                 }

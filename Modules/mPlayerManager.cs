@@ -28,8 +28,10 @@ namespace Dinkum.Modules
                     {
                         if (Vector3.Distance(entity.transform.position, Hacks.localPlayer.transform.position) <= 5f)
                         {
+                            
                             Inventory.inv.addItemToInventory(entity.myItemId, entity.stackAmount);
                             entity.pickUp();
+                            NetworkMapSharer.Destroy(entity);
                         }
                     }
                 }
@@ -55,7 +57,7 @@ namespace Dinkum.Modules
                 }
             }
 
-            if (closeFollowCamera)
+            if (UI_Vars.UI_t_CloseFollow)
             {
                 if (!CameraController.control.isInAimCam())
                 {

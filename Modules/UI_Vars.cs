@@ -35,6 +35,9 @@ namespace Dinkum.Modules
         public static bool UIToggleESPLabels;
         public static bool UIToggleESPLines;
         public static bool UIToggleESPBoxes;
+        public static bool UIToggleESPLocatorMenu;
+        public static bool UIToggleLocator;
+
 
         public static bool UI_t_ESPAnimals = false;
         public static bool UI_t_ESPPlayers = false;
@@ -45,11 +48,20 @@ namespace Dinkum.Modules
         public static bool UI_t_ESPLabels = false;
         public static bool UI_t_ESPLines = false;
         public static bool UI_t_ESPBoxes = false;
+        public static bool UI_t_ESPLocatorMenu = false;
+        public static bool UI_t_Locator = false;
 
         //Town Manager Menu
         public static bool UIToggleLockTent;
 
         public static bool UI_t_LockTent = false;
+
+        //World Manager Menu
+        public static bool UITogglePause;
+
+        public static bool UI_t_Pause = false;
+
+
 
         //Player Menu
         public static bool UIToggleGodMode;

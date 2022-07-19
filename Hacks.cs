@@ -11,6 +11,7 @@ namespace Dinkum
     {
         public static Camera MainCamera = null;
         public static float Timer = 0f;
+        public static bool nextPause = false;
 
         public static List<AnimalAI> Animals = new List<AnimalAI>();
         public static List<NPCAI> NPCS = new List<NPCAI>();
@@ -41,7 +42,23 @@ namespace Dinkum
             {
                 Modules.UI_Vars.t_MENU = !Modules.UI_Vars.t_MENU;
             }
+
+            if (Input.GetKeyDown(KeyCode.F5))
+            {
+                if (Time.timeScale == 1f)
+                {
+                    nextPause = true;
+                }
+                else
+                {
+                    nextPause = false;
+                    Time.timeScale = 1f;
+                }
+                
+            }
+
             
+
             if (Modules.mPlayerManager.isFlying && NetworkMapSharer.share.localChar)
             {
                 if (Input.GetKey(KeyCode.KeypadPlus))
@@ -76,12 +93,16 @@ namespace Dinkum
                 Players = GameObject.FindObjectsOfType<CharMovement>().ToList<CharMovement>();
                 NetworkPlayers = NetworkPlayersManager.manage.connectedChars.ToList<CharMovement>();
                 DroppedItems = GameObject.FindObjectsOfType<DroppedItem>().ToList<DroppedItem>();
+
+                localPlayer = NetworkMapSharer.share.localChar;
+
             }
             
             if (NetworkMapSharer.share.localChar)
             {
                 Modules.mPlayerManager.update();
                 Modules.mTownManager.update();
+                Modules.mWorldManager.update();
             }
 
             
@@ -99,6 +120,14 @@ namespace Dinkum
                 GUI.Box(new Rect(5f, 5f, 300f, 30f), "Menu will load in game");
             }
             
+            if (nextPause)
+            {
+                GUIStyle style = new GUIStyle();
+                style.fontSize = 30;
+                GUI.Box(new Rect(200f, 200f, (float)Screen.width - 400, (float)Screen.height - 400f), "");
+                GUI.Label(new Rect(((float)Screen.width / 2) - 100, ((float)Screen.height / 2) - 100, 200, 200), "Game Paused", style);
+                Time.timeScale = 0f;
+            }
             
         }
 
