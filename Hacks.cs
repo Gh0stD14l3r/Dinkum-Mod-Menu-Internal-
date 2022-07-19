@@ -3,6 +3,7 @@ using System.Threading;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace Dinkum
 {
@@ -27,7 +28,6 @@ namespace Dinkum
         public void Start()
         {
             
-            
         }
 
         public void Update()
@@ -42,7 +42,7 @@ namespace Dinkum
                 Modules.UI_Vars.t_MENU = !Modules.UI_Vars.t_MENU;
             }
             
-            if (Modules.mPlayerManager.isFlying)
+            if (Modules.mPlayerManager.isFlying && NetworkMapSharer.share.localChar)
             {
                 if (Input.GetKey(KeyCode.KeypadPlus))
                 {
@@ -56,7 +56,7 @@ namespace Dinkum
 
             // 5 Second timer to loop entities and objects to return to lists
             Timer += Time.deltaTime; 
-            if (Timer >= 5f) 
+            if (Timer >= 5f && NetworkMapSharer.share.localChar) 
             {
                 Timer = 0f;
                 
@@ -77,15 +77,27 @@ namespace Dinkum
                 NetworkPlayers = NetworkPlayersManager.manage.connectedChars.ToList<CharMovement>();
                 DroppedItems = GameObject.FindObjectsOfType<DroppedItem>().ToList<DroppedItem>();
             }
+            
+            if (NetworkMapSharer.share.localChar)
+            {
+                Modules.mPlayerManager.update();
+                Modules.mTownManager.update();
+            }
 
-            Modules.mPlayerManager.update();
-            Modules.mTownManager.update();
+            
         }
 
         public void OnGUI()
         {
-            Modules.UI.menu();
-            Modules.ESP.updateESP();
+            if (NetworkMapSharer.share.localChar)
+            {
+                Modules.UI.menu();
+                Modules.ESP.updateESP();
+            }
+            else
+            {
+                GUI.Box(new Rect(5f, 5f, 300f, 30f), "Menu will load in game");
+            }
             
             
         }

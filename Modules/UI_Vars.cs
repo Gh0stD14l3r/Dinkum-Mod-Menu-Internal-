@@ -55,9 +55,14 @@ namespace Dinkum.Modules
         public static bool UIToggleGodMode;
         public static bool UITogglePickupDropped;
         public static bool UIToggleFly;
+        public static bool UIToggleCloseFollow;
 
         public static bool UI_t_GodMode = false;
         public static bool UI_t_PickupDropped = false;
         public static bool UI_t_Fly = false;
+        public static bool UI_t_CloseFollow = false;
+
+        //Misc Menu
+
     }
 }

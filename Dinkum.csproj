@@ -318,6 +318,7 @@
     <Compile Include="Hacks.cs" />
     <Compile Include="Lib\NuColor.cs" />
     <Compile Include="Modules\ESP.cs" />
+    <Compile Include="Modules\mDebug.cs" />
     <Compile Include="Modules\mPlayerManager.cs" />
     <Compile Include="Modules\mTownManager.cs" />
     <Compile Include="Modules\UI.cs" />

@@ -12,7 +12,7 @@ namespace Dinkum.Modules
         public static Vector3 flightVector;
         public static float flyZ;
         public static bool isFlying;
-
+        public static bool closeFollowCamera = false;
         public static void update()
         {
             if (UI_Vars.UI_t_GodMode)
@@ -52,6 +52,21 @@ namespace Dinkum.Modules
                 {
                     isFlying = false;
                     flyZ = 0f;
+                }
+            }
+
+            if (closeFollowCamera)
+            {
+                if (!CameraController.control.isInAimCam())
+                {
+                    CameraController.control.enterAimCamera();
+                }
+            }
+            else
+            {
+                if (CameraController.control.isInAimCam())
+                {
+                    CameraController.control.exitAimCamera();;
                 }
             }
 

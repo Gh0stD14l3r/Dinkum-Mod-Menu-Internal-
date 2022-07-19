@@ -62,6 +62,6 @@ namespace Dinkum.Modules
             Hacks.localPlayer.transform.position = TownManager.manage.lastSleptPos;
         }
 
-
+        
     }
 }

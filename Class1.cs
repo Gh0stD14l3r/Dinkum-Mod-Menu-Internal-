@@ -4,6 +4,7 @@ namespace Dinkum
 {
     public class Loader
     {
+        
         public static void init()
         {
             Loader.Load = new GameObject();

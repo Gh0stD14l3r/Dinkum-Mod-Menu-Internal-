@@ -12,7 +12,7 @@ namespace Dinkum.Modules
         public static void menu()
         {
         
-            if (Modules.UI_Vars.t_MENU)
+            if (Modules.UI_Vars.t_MENU) //Main Menu
             {
                 float baseX = 200f;
 
@@ -62,7 +62,7 @@ namespace Dinkum.Modules
                 }
 
 
-                if (Modules.UI_Vars.UI_t_ESPm)
+                if (Modules.UI_Vars.UI_t_ESPm) //ESP Menu
                 {
                     float EbaseX = baseX + 305f;
 
@@ -117,7 +117,7 @@ namespace Dinkum.Modules
                     }
                 }
 
-                if (Modules.UI_Vars.UI_t_Townm)
+                if (Modules.UI_Vars.UI_t_Townm) //Town Manager Menu
                 {
                     float EbaseX = baseX + 305f;
 
@@ -149,7 +149,7 @@ namespace Dinkum.Modules
                     
                 }
 
-                if (Modules.UI_Vars.UI_t_Playerm)
+                if (Modules.UI_Vars.UI_t_Playerm) //Player Manager Menu
                 {
                     float EbaseX = baseX + 305f;
 
@@ -161,18 +161,36 @@ namespace Dinkum.Modules
                         Modules.UI_Vars.UI_t_GodMode = !Modules.UI_Vars.UI_t_GodMode;
                     }
 
-                    Modules.UI_Vars.UITogglePickupDropped = GUI.Toggle(new Rect(EbaseX + 10f, 30f, 180f, 20f), Modules.UI_Vars.UI_t_PickupDropped, "Auto Pickup Dropped Items");
+                    Modules.UI_Vars.UITogglePickupDropped = GUI.Toggle(new Rect(EbaseX + 10f, 30f, 180f, 22f), Modules.UI_Vars.UI_t_PickupDropped, "Auto Pickup Dropped Items");
                     if (Modules.UI_Vars.UITogglePickupDropped != Modules.UI_Vars.UI_t_PickupDropped)
                     {
                         Modules.UI_Vars.UI_t_PickupDropped = !Modules.UI_Vars.UI_t_PickupDropped;
                     }
 
-                    Modules.UI_Vars.UIToggleFly = GUI.Toggle(new Rect(EbaseX + 10f, 50f, 125f, 15f), Modules.UI_Vars.UI_t_Fly, "Fly Mode");
+                    Modules.UI_Vars.UIToggleFly = GUI.Toggle(new Rect(EbaseX + 10f, 50f, 125f, 22f), Modules.UI_Vars.UI_t_Fly, "Fly Mode");
                     if (Modules.UI_Vars.UIToggleFly != Modules.UI_Vars.UI_t_Fly)
                     {
                         Modules.UI_Vars.UI_t_Fly = !Modules.UI_Vars.UI_t_Fly;
                     }
 
+                    Modules.UI_Vars.UIToggleCloseFollow = GUI.Toggle(new Rect(EbaseX + 10f, 70f, 125f, 22f), Modules.UI_Vars.UI_t_CloseFollow, "Close Follow Camera");
+                    if (Modules.UI_Vars.UIToggleCloseFollow != Modules.UI_Vars.UI_t_CloseFollow)
+                    {
+                        Modules.UI_Vars.UI_t_CloseFollow = !Modules.UI_Vars.UI_t_CloseFollow;
+                    }
+                }
+
+                if (Modules.UI_Vars.UI_t_Miscm)
+                {
+                    float EbaseX = baseX + 305f;
+
+                    GUI.Box(new Rect(EbaseX + 5f, 5f, 300f, 130f), "");
+
+                    if (GUI.Button(new Rect(EbaseX + 10f, 10f, 131f, 20f), "Debug Output"))
+                    {
+                        mDebug.debugWindow();
+                    }
+                    
                 }
 
             }
@@ -185,20 +203,26 @@ namespace Dinkum.Modules
                 case "ESP":
                     if (Modules.UI_Vars.UI_t_Townm) { Modules.UI_Vars.UI_t_Townm = false; }
                     if (Modules.UI_Vars.UI_t_Playerm) { Modules.UI_Vars.UI_t_Playerm = false; }
+                    if (Modules.UI_Vars.UI_t_Miscm) { Modules.UI_Vars.UI_t_Miscm = false; }
                     break;
                 case "Player Manager":
                     if (Modules.UI_Vars.UI_t_ESPm) { Modules.UI_Vars.UI_t_ESPm = false; }
                     if (Modules.UI_Vars.UI_t_Townm) { Modules.UI_Vars.UI_t_Townm = false; }
+                    if (Modules.UI_Vars.UI_t_Miscm) { Modules.UI_Vars.UI_t_Miscm = false; }
                     break;
                 case "Town Manager":
                     if (Modules.UI_Vars.UI_t_ESPm) { Modules.UI_Vars.UI_t_ESPm = false; }
                     if (Modules.UI_Vars.UI_t_Playerm) { Modules.UI_Vars.UI_t_Playerm = false; }
+                    if (Modules.UI_Vars.UI_t_Miscm) { Modules.UI_Vars.UI_t_Miscm = false; }
                     break;
                 case "Animal Manager":
                     break;
                 case "World Manager":
                     break;
                 case "Misc":
+                    if (Modules.UI_Vars.UI_t_Playerm) { Modules.UI_Vars.UI_t_Playerm = false; }
+                    if (Modules.UI_Vars.UI_t_ESPm) { Modules.UI_Vars.UI_t_ESPm = false; }
+                    if (Modules.UI_Vars.UI_t_Playerm) { Modules.UI_Vars.UI_t_Playerm = false; }
                     break;
 
                 default:
