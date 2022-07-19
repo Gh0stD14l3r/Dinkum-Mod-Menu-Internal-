@@ -1,14 +1,35 @@
-BaseLoader C#
-A template for internal DLL mods/hacks to be injected in Unity Mono games.
+Dinkum Mod Menu
 
-- Render.cs is included to allow for drawing after using w2s
-- Basic DrawESP Method included for box and labels after using w2s
-- Injected DLL unload key (Default: End)
-- Some base Unity DLL assemblies have been included.
+How to use.
 
-Make sure to add the required references to the games Assembly DLL's to pull methods, classes and objects
+Note: You must disable Anti-Virus or add an exeption for the Mono Injector as it is detected as a false positive!
+
+1) Download source code and build yourself or...
+
+2) Download the Dinkum.dll from the releases
+https://github.com/Gh0stD14l3r/Dinkum-Mod-Menu-Internal-/releases/tag/release
+
+3) Download your own MonoInjector or use the one provided
+https://github.com/Gh0stD14l3r/Dinkum-Mod-Menu-Internal-/blob/master/SharpMonoInjector%20v2.5.zip
+
+4) Make sure the game is loaded and you are in your world.
+
+5) Run sm_gui.exe as administrator
+
+6) Click "Refresh" at the top for process (Your game should be auto detected)
+
+7) Browse to the Dinkum.dll you either downloaded or built yourself
+
+8) Change the Class name to "Loader" - case sensitive
+
+9) Change the Method name to "init" - case sensitive
+
+10) Press inject and have fun
+
+![image](https://user-images.githubusercontent.com/38970826/179638806-76dd3d45-afbd-49ba-bd2e-d627870a2446.png)
+
 
 Injection properties.
-- Namespace: BaseLoader
+- Namespace: Dinkum
 - Class: Loader
 - Method: init
