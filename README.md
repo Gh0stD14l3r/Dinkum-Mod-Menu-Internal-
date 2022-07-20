@@ -9,26 +9,14 @@ Note: You must disable Anti-Virus or add an exeption for the Mono Injector as it
 2) Download the Dinkum.dll from the releases
 https://github.com/Gh0stD14l3r/Dinkum-Mod-Menu-Internal-/releases/tag/release
 
-3) Download your own MonoInjector or use the one provided
-https://github.com/Gh0stD14l3r/Dinkum-Mod-Menu-Internal-/blob/master/SharpMonoInjector%20v2.5.zip
+3) Download the injector or use your own mono injector
+https://github.com/Gh0stD14l3r/Dinkum-Mod-Menu-Internal-/blob/master/Dinkum_Injector.zip
 
 4) Make sure the game is loaded and you are in your world.
 
-5) Run sm_gui.exe as administrator
+5) Run the injector as administrator and the menu will load into your game
 
-6) Click "Refresh" at the top for process (Your game should be auto detected)
-
-7) Browse to the Dinkum.dll you either downloaded or built yourself
-
-8) Change the Class name to "Loader" - case sensitive
-
-9) Change the Method name to "init" - case sensitive
-
-10) Press inject and have fun
-
-![image](https://user-images.githubusercontent.com/38970826/179638806-76dd3d45-afbd-49ba-bd2e-d627870a2446.png)
-
-
+For other Mono Injectors
 Injection properties.
 - Namespace: Dinkum
 - Class: Loader
@@ -44,6 +32,8 @@ Features
 - Add Beauty to the town
 - Teleport back to your home
 - Lock Tent protection (Network players cannot access your tent)
+- Pause game (F5 to toggle)
+- View distance/Chunk block loader
 
 - More to be added
 
