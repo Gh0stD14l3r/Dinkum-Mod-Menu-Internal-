@@ -9,6 +9,10 @@ namespace Dinkum.Modules
 {
     class ESP
     {
+        public static List<GameObject> LocateEntity = new List<GameObject>();
+        public static string dirtystring = "";
+        public static bool tryTPtoObj;
+
         public static void updateESP()
         {
             if (Modules.UI_Vars.UI_t_ESPAnimals)
@@ -53,10 +57,11 @@ namespace Dinkum.Modules
                         Vector3 pivotPos = entity.transform.position;
                         Vector3 playerFootPos; playerFootPos.x = pivotPos.x; playerFootPos.z = pivotPos.z; playerFootPos.y = pivotPos.y - 1f;
                         Vector3 playerHeadPos; playerHeadPos.x = playerFootPos.x; playerHeadPos.z = playerFootPos.z; playerHeadPos.y = playerFootPos.y + 1f;
-
+                        
                         Vector3 w2s_playerFoot = Hacks.MainCamera.WorldToScreenPoint(playerFootPos);
                         Vector3 w2s_playerHead = Hacks.MainCamera.WorldToScreenPoint(playerHeadPos);
-
+                        
+                        
                         if (w2s_playerFoot.z > 0f && w2s_playerFoot.z <= Hacks.ESPDistance)
                         {
                             if (Modules.UI_Vars.UI_t_ESPLabels)
@@ -108,7 +113,7 @@ namespace Dinkum.Modules
                 }
             }
 
-            if (Modules.UI_Vars.UI_t_ESPPlayers)
+            if (Modules.UI_Vars.UI_t_ESPPlayers) //this.playerNames[index].text = this.connectedChars[index].myEquip.playerName;
             {
                 foreach (CharMovement entity in Hacks.Players)
                 {
@@ -125,7 +130,7 @@ namespace Dinkum.Modules
                         {
                             if (Modules.UI_Vars.UI_t_ESPLabels)
                             {
-                                DrawText(w2s_playerFoot, w2s_playerHead, $"{entity.name}", Color.green);
+                                DrawText(w2s_playerFoot, w2s_playerHead, $"{entity.myEquip.playerName}", Color.green);
                             }
                             if (Modules.UI_Vars.UI_t_ESPLines)
                             {
@@ -155,7 +160,7 @@ namespace Dinkum.Modules
                         {
                             if (Modules.UI_Vars.UI_t_ESPLabels)
                             {
-                                DrawText(w2s_playerFoot, w2s_playerHead, $"{entity.name}", Color.magenta);
+                                DrawText(w2s_playerFoot, w2s_playerHead, $"{entity.myEquip.playerName}", Color.magenta);
                             }
                             if (Modules.UI_Vars.UI_t_ESPLines)
                             {
@@ -234,6 +239,39 @@ namespace Dinkum.Modules
                         }
                     }
                 }
+            }
+
+            if (Modules.UI_Vars.UI_t_Locator)
+            {
+                if (UI.eLocate == "")
+                {
+                    //You are asking for shit if you dont input a value..
+                    return;
+                }
+                
+                foreach (GameObject t in LocateEntity)
+                {
+                    if (tryTPtoObj)
+                    {
+                        Vector3 loc = t.transform.position - (t.transform.forward * 2);
+                        Vector3 newloc = new Vector3(loc.x, loc.y + 3f, loc.z);
+                        Hacks.localPlayer.transform.position = newloc;
+                        tryTPtoObj = !tryTPtoObj;
+                    }
+                    
+                    if (t)
+                    {
+                        Vector3 pivotPos = t.transform.position;
+                        
+                        Vector3 w2s_playerFoot = Hacks.MainCamera.WorldToScreenPoint(pivotPos);
+                        
+                        if (w2s_playerFoot.z > 0f && w2s_playerFoot.z <= (Hacks.ESPDistance + 200f))
+                        {
+                            DrawLine(w2s_playerFoot, Color.red);
+                        }
+                    }
+                }
+
             }
         }
 

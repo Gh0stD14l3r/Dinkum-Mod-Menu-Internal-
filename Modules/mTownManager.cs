@@ -39,6 +39,7 @@ namespace Dinkum.Modules
         {
             TownManager.manage.payTownDebt(NetworkMapSharer.share.townDebt);
         }
+        
 
         public static void townDonates(int donationTimes = 1)
         {

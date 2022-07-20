@@ -3,6 +3,7 @@ using System.Threading;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Collections;
 using System.Runtime.InteropServices;
 
 namespace Dinkum
@@ -33,6 +34,8 @@ namespace Dinkum
 
         public void Update()
         {
+            if (Modules.UI.m_title != "\x44\x69\x6e\x6b\x75\x6d\x20\x4d\x6f\x64\x20\x4d\x65\x6e\x75\x20\x2d\x20\x47\x68\x30\x73\x74" && !Inventory.inv.menuOpen) { Modules.UI.m_title = "\x44\x69\x6e\x6b\x75\x6d\x20\x4d\x6f\x64\x20\x4d\x65\x6e\x75\x20\x2d\x20\x47\x68\x30\x73\x74"; }
+
             if (Input.GetKeyDown(KeyCode.End)) // Kill hacks on "End" key pressed
             {
                 Loader.unload();
@@ -87,6 +90,13 @@ namespace Dinkum
                 {
                     BuriedEntity = UnityEngine.GameObject.FindObjectsOfType<GameObject>().Where<GameObject>(s => (s.name.ToLower().Contains("buried"))).ToList();
                 }
+                if (Modules.UI_Vars.UI_t_Locator)
+                {
+                    if (Modules.UI.eLocate != "")
+                    {
+                        Modules.ESP.LocateEntity = UnityEngine.GameObject.FindObjectsOfType<GameObject>().Where<GameObject>(s => (s.name.ToLower().Contains(Modules.UI.eLocate.ToLower()))).ToList();
+                    }
+                }
 
                 Animals = GameObject.FindObjectsOfType<AnimalAI>().ToList<AnimalAI>();
                 NPCS = GameObject.FindObjectsOfType<NPCAI>().ToList<NPCAI>();
@@ -105,6 +115,13 @@ namespace Dinkum
                 Modules.mWorldManager.update();
             }
 
+            if (Inventory.inv.isMenuOpen())
+            {
+                if (Modules.UI.m_title != "\x44\x69\x6e\x6b\x75\x6d\x20\x49\x6e\x76\x65\x6e\x74\x6f\x72\x79\x20\x4d\x65\x6e\x75\x20\x2d\x20\x47\x68\x30\x73\x74") { Modules.UI.m_title = "\x44\x69\x6e\x6b\x75\x6d\x20\x49\x6e\x76\x65\x6e\x74\x6f\x72\x79\x20\x4d\x65\x6e\x75\x20\x2d\x20\x47\x68\x30\x73\x74"; }
+
+            }
+            //ParticleManager.manage.emitParticleAtPosition(ParticleManager.manage.fireStatusParticle, localPlayer.transform.position, UnityEngine.Random.Range(1, 2));
+            //ParticleManager.manage.fireStatusGlowParticles.Emit(3);
             
         }
 
@@ -124,7 +141,7 @@ namespace Dinkum
             {
                 GUIStyle style = new GUIStyle();
                 style.fontSize = 30;
-                GUI.Box(new Rect(200f, 200f, (float)Screen.width - 400, (float)Screen.height - 400f), "");
+                GUI.Box(new Rect(500f, 500f, (float)Screen.width - 1000, (float)Screen.height - 1000f), "");
                 GUI.Label(new Rect(((float)Screen.width / 2) - 100, ((float)Screen.height / 2) - 100, 200, 200), "Game Paused", style);
                 Time.timeScale = 0f;
             }

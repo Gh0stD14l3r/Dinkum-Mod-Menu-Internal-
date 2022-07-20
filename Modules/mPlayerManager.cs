@@ -28,10 +28,10 @@ namespace Dinkum.Modules
                     {
                         if (Vector3.Distance(entity.transform.position, Hacks.localPlayer.transform.position) <= 5f)
                         {
-                            
                             Inventory.inv.addItemToInventory(entity.myItemId, entity.stackAmount);
                             entity.pickUp();
-                            NetworkMapSharer.Destroy(entity);
+                            Mirror.NetworkServer.UnSpawn(entity.transform.root.gameObject);
+                            NetworkMapSharer.Destroy(entity.transform.root.gameObject);
                         }
                     }
                 }

@@ -75,7 +75,6 @@ D:\Storage\dotNet Projects\Internal Hacks\Dinkum\bin\Debug\UnityEngine.VRModule.
 D:\Storage\dotNet Projects\Internal Hacks\Dinkum\bin\Debug\UnityEngine.WindModule.dll
 D:\Storage\dotNet Projects\Internal Hacks\Dinkum\bin\Debug\UnityEngine.XR.LegacyInputHelpers.dll
 D:\Storage\dotNet Projects\Internal Hacks\Dinkum\bin\Debug\UnityEngine.XRModule.dll
-D:\Storage\dotNet Projects\Internal Hacks\Dinkum\obj\Debug\Dinkum.csprojAssemblyReference.cache
 D:\Storage\dotNet Projects\Internal Hacks\Dinkum\obj\Debug\Dinkum.csproj.CoreCompileInputs.cache
 D:\Storage\dotNet Projects\Internal Hacks\Dinkum\obj\Debug\Dinkum.csproj.CopyComplete
 D:\Storage\dotNet Projects\Internal Hacks\Dinkum\obj\Debug\Dinkum.dll
@@ -83,3 +82,4 @@ D:\Storage\dotNet Projects\Internal Hacks\Dinkum\obj\Debug\Dinkum.pdb
 D:\Storage\dotNet Projects\Internal Hacks\Dinkum\bin\Debug\Mirror.Authenticators.dll
 D:\Storage\dotNet Projects\Internal Hacks\Dinkum\bin\Debug\Mirror.Components.dll
 D:\Storage\dotNet Projects\Internal Hacks\Dinkum\bin\Debug\Mirror.dll
+D:\Storage\dotNet Projects\Internal Hacks\Dinkum\obj\Debug\Dinkum.csprojAssemblyReference.cache

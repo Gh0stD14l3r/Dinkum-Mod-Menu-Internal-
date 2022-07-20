@@ -10,6 +10,10 @@ namespace Dinkum.Modules
     class UI
     {
         public static string eLocate = "Tent";
+        public static string tLocate = "Tent";
+        public static string m_title;
+        public static float dist = (float)NewChunkLoader.loader.getChunkDistance();
+        public static string dbg;
         public static void menu()
         {
         
@@ -18,7 +22,7 @@ namespace Dinkum.Modules
                 float baseX = 200f;
 
                 GUI.Box(new Rect(baseX + 5f, 5f, 300f, 120f), "");
-                GUI.Label(new Rect(baseX + 10f, 5f, 250f, 30f), "Dinkum Mod Menu - Gh0st");
+                GUI.Label(new Rect(baseX + 10f, 5f, 250f, 30f), m_title);
 
                 Modules.UI_Vars.UIToggleESPMenu = GUI.Toggle(new Rect(baseX + 10f, 32f, 106f, 15f), Modules.UI_Vars.UI_t_ESPm, "ESP Menu");
                 if (Modules.UI_Vars.UIToggleESPMenu != Modules.UI_Vars.UI_t_ESPm)
@@ -61,6 +65,7 @@ namespace Dinkum.Modules
                     Modules.UI_Vars.UI_t_Miscm = !Modules.UI_Vars.UI_t_Miscm;
                     toggleHelper("Misc");
                 }
+                GUI.Label(new Rect(baseX + 10f, 110f, (float)Screen.width, 30f), dbg);
 
 
                 if (Modules.UI_Vars.UI_t_ESPm) //ESP Menu
@@ -193,14 +198,27 @@ namespace Dinkum.Modules
 
                     GUI.Box(new Rect(EbaseX + 5f, 5f, 300f, 130f), "");
 
-                    Modules.UI_Vars.UIToggleLocator = GUI.Toggle(new Rect(EbaseX + 10f, 10f, 180f, 17f), Modules.UI_Vars.UI_t_Locator, "Use GameObject Locator");
+                    Modules.UI_Vars.UIToggleLocator = GUI.Toggle(new Rect(EbaseX + 10f, 10f, 180f, 17f), Modules.UI_Vars.UI_t_Locator, $"Locate {eLocate}");
                     if (Modules.UI_Vars.UIToggleLocator != Modules.UI_Vars.UI_t_Locator)
                     {
                         Modules.UI_Vars.UI_t_Locator = !Modules.UI_Vars.UI_t_Locator;
                     }
-                    eLocate = GUI.TextField(new Rect(EbaseX + 10f, 30f, 200f, 25f), eLocate);
+                    tLocate = GUI.TextField(new Rect(EbaseX + 10f, 30f, 200f, 25f), tLocate);
 
+                    if (GUI.Button(new Rect(EbaseX + 215f, 30f, 90f, 25f), "Set & Go"))
+                    {
+                        eLocate = tLocate;
+                        GUI.FocusControl(null);
+                        Modules.UI_Vars.UI_t_ESPLocatorMenu = false;
+                    }
 
+                    if (GUI.Button(new Rect(EbaseX + 10f, 69f, 131f, 20f), "TP to Object"))
+                    {
+                        ESP.tryTPtoObj = true;
+                    }
+                    
+                    
+                    
                 }
 
                 if (Modules.UI_Vars.UI_t_Worldm)
@@ -209,11 +227,15 @@ namespace Dinkum.Modules
 
                     GUI.Box(new Rect(EbaseX + 5f, 5f, 300f, 130f), "");
 
-                    Modules.UI_Vars.UITogglePause = GUI.Toggle(new Rect(EbaseX + 10f, 10f, 125f, 15f), Modules.UI_Vars.UI_t_Pause, "Pause Game");
+                    Modules.UI_Vars.UITogglePause = GUI.Toggle(new Rect(EbaseX + 10f, 3f, 281f, 15f), Modules.UI_Vars.UI_t_Pause, "Pause Game (Toggle - F5)");
                     if (Modules.UI_Vars.UITogglePause != Modules.UI_Vars.UI_t_Pause)
                     {
                         Modules.UI_Vars.UI_t_Pause = !Modules.UI_Vars.UI_t_Pause;
                     }
+
+                    GUI.Label(new Rect(EbaseX + 10f, 23, 107, 24),"View Distance");
+                    dist = GUI.HorizontalSlider(new Rect(EbaseX + 10f, 47, 291, 20), dist, 1f, 5f);
+                    if (dist != mWorldManager.viewDist) { mWorldManager.viewDist = dist; NewChunkLoader.loader.setChunkDistance((int)dist); }
                 }
 
                 if (Modules.UI_Vars.UI_t_Miscm)
@@ -224,7 +246,7 @@ namespace Dinkum.Modules
 
                     if (GUI.Button(new Rect(EbaseX + 10f, 10f, 131f, 20f), "Debug Output"))
                     {
-                        
+                        mDebug.debugWindow();
                     }
                     
                 }
@@ -236,29 +258,47 @@ namespace Dinkum.Modules
         {
             switch (menuName)
             {
-                case "ESP":
+                case "ESP": // Modules.UI_Vars.UI_t_ESPm
+                    if (Modules.UI_Vars.UI_t_Playerm) { Modules.UI_Vars.UI_t_Playerm = false; }
                     if (Modules.UI_Vars.UI_t_Townm) { Modules.UI_Vars.UI_t_Townm = false; }
-                    if (Modules.UI_Vars.UI_t_Playerm) { Modules.UI_Vars.UI_t_Playerm = false; }
+                    if (Modules.UI_Vars.UI_t_Animalm) { Modules.UI_Vars.UI_t_Animalm = false; }
+                    if (Modules.UI_Vars.UI_t_Worldm) { Modules.UI_Vars.UI_t_Worldm = false; }
                     if (Modules.UI_Vars.UI_t_Miscm) { Modules.UI_Vars.UI_t_Miscm = false; }
                     break;
-                case "Player Manager":
+                case "Player Manager": // Modules.UI_Vars.UI_t_Playerm
                     if (Modules.UI_Vars.UI_t_ESPm) { Modules.UI_Vars.UI_t_ESPm = false; }
                     if (Modules.UI_Vars.UI_t_Townm) { Modules.UI_Vars.UI_t_Townm = false; }
+                    if (Modules.UI_Vars.UI_t_Animalm) { Modules.UI_Vars.UI_t_Animalm = false; }
+                    if (Modules.UI_Vars.UI_t_Worldm) { Modules.UI_Vars.UI_t_Worldm = false; }
                     if (Modules.UI_Vars.UI_t_Miscm) { Modules.UI_Vars.UI_t_Miscm = false; }
                     break;
-                case "Town Manager":
+                case "Town Manager": // Modules.UI_Vars.UI_t_Townm
                     if (Modules.UI_Vars.UI_t_ESPm) { Modules.UI_Vars.UI_t_ESPm = false; }
                     if (Modules.UI_Vars.UI_t_Playerm) { Modules.UI_Vars.UI_t_Playerm = false; }
+                    if (Modules.UI_Vars.UI_t_Animalm) { Modules.UI_Vars.UI_t_Animalm = false; }
+                    if (Modules.UI_Vars.UI_t_Worldm) { Modules.UI_Vars.UI_t_Worldm = false; }
                     if (Modules.UI_Vars.UI_t_Miscm) { Modules.UI_Vars.UI_t_Miscm = false; }
                     break;
-                case "Animal Manager":
-                    break;
-                case "World Manager":
-                    break;
-                case "Misc":
-                    if (Modules.UI_Vars.UI_t_Playerm) { Modules.UI_Vars.UI_t_Playerm = false; }
+                case "Animal Manager": // Modules.UI_Vars.UI_t_Animalm
                     if (Modules.UI_Vars.UI_t_ESPm) { Modules.UI_Vars.UI_t_ESPm = false; }
                     if (Modules.UI_Vars.UI_t_Playerm) { Modules.UI_Vars.UI_t_Playerm = false; }
+                    if (Modules.UI_Vars.UI_t_Townm) { Modules.UI_Vars.UI_t_Townm = false; }
+                    if (Modules.UI_Vars.UI_t_Worldm) { Modules.UI_Vars.UI_t_Worldm = false; }
+                    if (Modules.UI_Vars.UI_t_Miscm) { Modules.UI_Vars.UI_t_Miscm = false; }
+                    break;
+                case "World Manager": // Modules.UI_Vars.UI_t_Worldm
+                    if (Modules.UI_Vars.UI_t_ESPm) { Modules.UI_Vars.UI_t_ESPm = false; }
+                    if (Modules.UI_Vars.UI_t_Playerm) { Modules.UI_Vars.UI_t_Playerm = false; }
+                    if (Modules.UI_Vars.UI_t_Townm) { Modules.UI_Vars.UI_t_Townm = false; }
+                    if (Modules.UI_Vars.UI_t_Animalm) { Modules.UI_Vars.UI_t_Animalm = false; }
+                    if (Modules.UI_Vars.UI_t_Miscm) { Modules.UI_Vars.UI_t_Miscm = false; }
+                    break;
+                case "Misc": // Modules.UI_Vars.UI_t_Miscm
+                    if (Modules.UI_Vars.UI_t_ESPm) { Modules.UI_Vars.UI_t_ESPm = false; }
+                    if (Modules.UI_Vars.UI_t_Playerm) { Modules.UI_Vars.UI_t_Playerm = false; }
+                    if (Modules.UI_Vars.UI_t_Townm) { Modules.UI_Vars.UI_t_Townm = false; }
+                    if (Modules.UI_Vars.UI_t_Animalm) { Modules.UI_Vars.UI_t_Animalm = false; }
+                    if (Modules.UI_Vars.UI_t_Worldm) { Modules.UI_Vars.UI_t_Worldm = false; }
                     break;
 
                 default:

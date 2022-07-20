@@ -9,6 +9,7 @@ namespace Dinkum.Modules
 {
     class mWorldManager
     {
+        public static float viewDist = (float)NewChunkLoader.loader.getChunkDistance();
         public static void update()
         {
             if (UI_Vars.UI_t_Pause)
