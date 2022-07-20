@@ -2,7 +2,7 @@ Dinkum Mod Menu
 
 How to use.
 
-Note: You must disable Anti-Virus or add an exeption for the Mono Injector as it is detected as a false positive!
+Note: Injector detected from 19/69 Anti-Virus. If yours picks it up you will need to disable AV while loading
 
 1) Download source code and build yourself or...
 
