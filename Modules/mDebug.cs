@@ -58,8 +58,5 @@ namespace Dinkum.Modules
             go.AddComponent<NavMeshAgent>();
             GameObject.Destroy(assetBundleCreateRequest);
         }
-
-        
-
     }
 }

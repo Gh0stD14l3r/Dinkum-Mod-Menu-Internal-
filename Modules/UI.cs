@@ -16,7 +16,6 @@ namespace Dinkum.Modules
         public static string dbg;
         public static void menu()
         {
-        
             if (Modules.UI_Vars.t_MENU) //Main Menu
             {
                 float baseX = 200f;
@@ -216,9 +215,6 @@ namespace Dinkum.Modules
                     {
                         ESP.tryTPtoObj = true;
                     }
-                    
-                    
-                    
                 }
 
                 if (Modules.UI_Vars.UI_t_Worldm)
