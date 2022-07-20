@@ -14,6 +14,8 @@ https://github.com/Gh0stD14l3r/Dinkum-Mod-Menu-Internal-/blob/master/Dinkum_Inje
 
 4) Make sure the game is loaded and you are in your world.
 
+5)Place the Dinkum.dll in the folder with the injector
+
 5) Run the injector as administrator and the menu will load into your game
 
 For other Mono Injectors
