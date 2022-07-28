@@ -10,7 +10,6 @@ Note: Injector detected from 19/69 Anti-Virus. If yours picks it up you will nee
 https://github.com/Gh0stD14l3r/Dinkum-Mod-Menu-Internal-/releases/tag/release
 
 3) Download the injector or use your own mono injector
-https://github.com/Gh0stD14l3r/Dinkum-Mod-Menu-Internal-/blob/master/Dinkum_Injector.zip
 
 4) Make sure the game is loaded and you are in your world.
 
